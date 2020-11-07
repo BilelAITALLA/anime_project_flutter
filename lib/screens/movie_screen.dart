@@ -94,7 +94,7 @@ class _MovieScreenState extends State<MovieScreen> {
                           onPressed: () => Navigator.of(context).push(
                               new MaterialPageRoute(
                                   builder: (BuildContext context) {
-                            return new VideoPlayer();
+                            return new MoviePlayer(movie: widget.movie);
                           })),
                           icon: Icon(Icons.play_arrow),
                           iconSize: 60.0,

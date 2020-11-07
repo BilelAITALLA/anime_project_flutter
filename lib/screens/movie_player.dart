@@ -1,23 +1,28 @@
+import 'package:netflix/models/movie_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flick_video_player/flick_video_player.dart';
+import 'package:flutter/services.dart';
+import 'package:netflix/movieplayer/landscape_player/landscape_player_controls.dart';
 import 'package:video_player/video_player.dart';
 
-class VideoPlayer extends StatefulWidget {
-  VideoPlayer({Key key}) : super(key: key);
+class MoviePlayer extends StatefulWidget {
+  final Movie movie;
+
+  MoviePlayer({this.movie});
 
   @override
-  _SamplePlayerState createState() => _SamplePlayerState();
+  _MoviePlayerState createState() => _MoviePlayerState();
 }
 
-class _SamplePlayerState extends State<VideoPlayer> {
+class _MoviePlayerState extends State<MoviePlayer> {
   FlickManager flickManager;
+
   @override
   void initState() {
     super.initState();
     flickManager = FlickManager(
-      videoPlayerController:
-          VideoPlayerController.asset("images/videos/op15.mp4"),
-    );
+        videoPlayerController:
+            VideoPlayerController.network(widget.movie.trailer));
   }
 
   @override
@@ -28,8 +33,18 @@ class _SamplePlayerState extends State<VideoPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: FlickVideoPlayer(flickManager: flickManager),
+    return Scaffold(
+      body: FlickVideoPlayer(
+        flickManager: flickManager,
+        preferredDeviceOrientation: [
+          DeviceOrientation.landscapeRight,
+          DeviceOrientation.landscapeLeft
+        ],
+        systemUIOverlay: [],
+        flickVideoWithControls: FlickVideoWithControls(
+          controls: LandscapePlayerControls(),
+        ),
+      ),
     );
   }
 }

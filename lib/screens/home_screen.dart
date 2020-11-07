@@ -183,8 +183,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           SizedBox(height: 20.0),
           ContentScrollMovie(
-            list: myList,
-            title: 'My List',
+            list: popular,
+            title: 'Popular',
             imageHeight: 250.0,
             imageWidth: 150.0,
           ),
@@ -197,11 +197,11 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           SizedBox(height: 20.0),
           ContentScrollMovie(
-            list: popular,
-            title: 'Popular',
+            list: myList,
+            title: 'My List',
             imageHeight: 250.0,
             imageWidth: 150.0,
-          )
+          ),
         ],
       ),
     );
