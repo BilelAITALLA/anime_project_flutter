@@ -12,13 +12,13 @@ Il devra pouvoir:
 N'etant pas encore construit au format d'apk, ANIMEX a besoin d'avoir Flutter installé sur votre poste pour être lancé sur votre mobile (connecté à l'ordinateur).
 https://flutter.dev/docs/get-started/install
 
-### Page d'acceuil
-![HomeScreen](/images/homescreen.gif)
-### Ajout à la liste
-![addliste](/images/ajoutliste.gif)
-### Page des series
-![MovieScreen](/images/moviescreen.jpg)
-### Lecteur vidéo
-![MoviePlayer](/images/movieplayer.jpg)
-### Page de recherches
-![Search](/images/searchpage.jpg)
+# Demo
+
+ |                                                              ![](/images/homescreen.gif)                                                              |                                                                ![](/images/ajoutliste.gif)                                                                |                                                           ![](https://github.com/GeekyAnts/flick-video-player-demo-videos/blob/master/demo/feed_player.gif?raw=true)                                                           |
+ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+ | Default player  | Animation player  | Feed player  |
+
+
+|                                                                     ![](https://github.com/GeekyAnts/flick-video-player-demo-videos/blob/master/demo/custom_orientation.gif?raw=true)                                                                      |                                                                ![](https://github.com/GeekyAnts/flick-video-player-demo-videos/blob/master/demo/landscape_player.gif?raw=true)                                                                |
+| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| Orientation player  | Landscape player  |
