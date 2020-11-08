@@ -14,6 +14,8 @@ https://flutter.dev/docs/get-started/install
 
 ### Page d'acceuil
 ![HomeScreen](/images/homescreen.gif)
+### Ajout à la liste
+![addliste](/images/ajoutliste.gif)
 ### Page des series
 ![MovieScreen](/images/moviescreen.jpg)
 ### Lecteur vidéo
