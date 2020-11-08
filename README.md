@@ -14,9 +14,9 @@ https://flutter.dev/docs/get-started/install
 
 # Demo
 
- |                                                              ![](/images/homescreen.gif)                                                              |                                                                ![](/images/ajoutliste.gif)                                                                |                                                           ![](https://github.com/GeekyAnts/flick-video-player-demo-videos/blob/master/demo/feed_player.gif?raw=true)                                                           |
+ |                                                              ![](/images/homescreen.gif)                                                              |                                                                ![](/images/ajoutliste.gif)                                                                |                                                           ![]/images/movieplayer.gif)                                                           |
  | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
- | Default player  | Animation player  | Feed player  |
+ | Page d'acceuil  | Ajout à la liste  | Lecteur Vidéo  |
 
 
 |                                                                     ![](https://github.com/GeekyAnts/flick-video-player-demo-videos/blob/master/demo/custom_orientation.gif?raw=true)                                                                      |                                                                ![](https://github.com/GeekyAnts/flick-video-player-demo-videos/blob/master/demo/landscape_player.gif?raw=true)                                                                |
