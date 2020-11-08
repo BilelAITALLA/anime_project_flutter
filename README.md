@@ -12,7 +12,8 @@ Il devra pouvoir:
 N'etant pas encore construit au format d'apk, ANIMEX a besoin d'avoir Flutter installé sur votre poste pour être lancé sur votre mobile (connecté à l'ordinateur).
 https://flutter.dev/docs/get-started/install
 
-### Page d'acceuil
+### Page d'acceuil   ### Ajout à la liste
+![addliste](/images/ajoutliste.gif)
 ![HomeScreen](/images/homescreen.gif)
 ### Ajout à la liste
 ![addliste](/images/ajoutliste.gif)
