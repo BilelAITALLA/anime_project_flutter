@@ -13,7 +13,7 @@ N'etant pas encore construit au format d'apk, ANIMEX a besoin d'avoir Flutter in
 https://flutter.dev/docs/get-started/install
 
 ### Page d'acceuil                                                  Ajout à la liste
-                                                                    ![addliste](/images/ajoutliste.gif)
+   ![addliste](/images/ajoutliste.gif)
 ![HomeScreen](/images/homescreen.gif)
 ### Ajout à la liste
 ![addliste](/images/ajoutliste.gif)
