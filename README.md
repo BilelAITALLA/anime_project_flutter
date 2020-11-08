@@ -13,7 +13,7 @@ N'etant pas encore construit au format d'apk, ANIMEX a besoin d'avoir Flutter in
 https://flutter.dev/docs/get-started/install
 
 ### Page d'acceuil
-![HomeScreen](/images/homescreen.jpg)
+![HomeScreen](/images/homescreen.gif)
 ### Page des series
 ![MovieScreen](/images/moviescreen.jpg)
 ### Lecteur vidéo
