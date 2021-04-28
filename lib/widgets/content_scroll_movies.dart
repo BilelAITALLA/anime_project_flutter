@@ -3,14 +3,20 @@ import 'package:netflix/models/movie_model.dart';
 import 'package:netflix/screens/movie_screen.dart';
 
 class ContentScrollMovie extends StatelessWidget {
+  final List<Movie> movies;
   final List<Movie> list;
+  final List<Movie> movielist;
+  final List<Movie> carousel;
   final String title;
   final double imageHeight;
   final double imageWidth;
 
   ContentScrollMovie({
+    this.movies,
     this.list,
     this.title,
+    this.carousel,
+    this.movielist,
     this.imageHeight,
     this.imageWidth,
   });
@@ -47,19 +53,24 @@ class ContentScrollMovie extends StatelessWidget {
           child: ListView.builder(
             padding: EdgeInsets.symmetric(horizontal: 30.0),
             scrollDirection: Axis.horizontal,
-            itemCount: list.length,
+            itemCount: movies.length,
             itemBuilder: (BuildContext context, int index) {
               return Container(
                 child: GestureDetector(
                   onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => MovieScreen(movie: list[index]),
+                        builder: (_) => MovieScreen(
+                          movie: movies[index],
+                          carousel: carousel,
+                          movielist: movielist,
+                          list: list,
+                        ),
                       )),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10.0),
                     child: Image(
-                      image: AssetImage(list[index].poster),
+                      image: NetworkImage(movies[index].poster),
                       fit: BoxFit.cover,
                     ),
                   ),

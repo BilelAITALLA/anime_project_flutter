@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ContentScroll extends StatelessWidget {
-  final List<String> images;
+  final List<dynamic> images;
   final String title;
   final double imageHeight;
   final double imageWidth;
@@ -65,7 +65,7 @@ class ContentScroll extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10.0),
                   child: Image(
-                    image: AssetImage(images[index]),
+                    image: NetworkImage(images[index]),
                     fit: BoxFit.cover,
                   ),
                 ),
