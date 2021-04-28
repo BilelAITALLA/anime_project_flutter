@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:netflix/SQL/database_helper.dart';
 import 'package:netflix/models/movie_model.dart';
 import 'package:netflix/screens/home_screen.dart';
 import 'package:netflix/screens/movie_player.dart';
@@ -8,27 +9,25 @@ import 'package:netflix/widgets/content_scroll.dart';
 
 class MovieScreen extends StatefulWidget {
   final Movie movie;
+  final List<Movie> list;
+  final List<Movie> movielist;
+  final List<Movie> carousel;
 
-  MovieScreen({this.movie});
+  MovieScreen({this.movie, this.list, this.carousel, this.movielist});
 
   @override
   _MovieScreenState createState() => _MovieScreenState();
 }
 
 class _MovieScreenState extends State<MovieScreen> {
-  _addToList(Movie addmovie) => {setState(() => myList.add(addmovie))};
-  _removeFromList(Movie removie) => {setState(() => myList.remove(removie))};
-
+  DatabaseHelper helper = DatabaseHelper();
   Future<bool> _onWillPop() async {
-    Navigator.of(context)
-        .push(new MaterialPageRoute(builder: (BuildContext context) {
-      return new HomeScreen();
-    }));
+    Navigator.pop(context);
   }
 
   @override
   Widget build(BuildContext context) {
-    bool check = myList.contains(widget.movie);
+    bool check = widget.list.contains(widget.movie);
     return new WillPopScope(
         onWillPop: _onWillPop,
         child: new Scaffold(
@@ -48,7 +47,7 @@ class _MovieScreenState extends State<MovieScreen> {
                             height: 400.0,
                             width: double.infinity,
                             fit: BoxFit.cover,
-                            image: AssetImage(widget.movie.poster),
+                            image: NetworkImage(widget.movie.poster),
                           )),
                     ),
                   ),
@@ -57,11 +56,7 @@ class _MovieScreenState extends State<MovieScreen> {
                     children: <Widget>[
                       IconButton(
                         padding: EdgeInsets.only(left: 30.0),
-                        onPressed: () => Navigator.of(context).push(
-                            new MaterialPageRoute(
-                                builder: (BuildContext context) {
-                          return new HomeScreen();
-                        })),
+                        onPressed: () => Navigator.pop(context),
                         icon: Icon(Icons.arrow_back),
                         iconSize: 30.0,
                         color: Colors.black,
@@ -70,13 +65,6 @@ class _MovieScreenState extends State<MovieScreen> {
                         image: AssetImage('images/netflix_logo.png'),
                         height: 60.0,
                         width: 150.0,
-                      ),
-                      IconButton(
-                        padding: EdgeInsets.only(right: 30.0),
-                        onPressed: () => myList.add(widget.movie),
-                        icon: Icon(Icons.favorite_border),
-                        iconSize: 30.0,
-                        color: Colors.black,
                       ),
                     ],
                   ),
@@ -91,11 +79,7 @@ class _MovieScreenState extends State<MovieScreen> {
                         shape: CircleBorder(),
                         fillColor: Colors.white,
                         child: IconButton(
-                          onPressed: () => Navigator.of(context).push(
-                              new MaterialPageRoute(
-                                  builder: (BuildContext context) {
-                            return new MoviePlayer(movie: widget.movie);
-                          })),
+                          onPressed: () => Navigator.pop(context),
                           icon: Icon(Icons.play_arrow),
                           iconSize: 60.0,
                           color: Colors.deepOrangeAccent[400],
@@ -108,16 +92,16 @@ class _MovieScreenState extends State<MovieScreen> {
                     left: 25.0,
                     child: IconButton(
                       onPressed: () {
-                        if (myList.length == 0) {
+                        if (widget.list.length == 0) {
                           check = false;
-                          _addToList(widget.movie);
+                          helper.insertMovie(widget.movie);
                         } else {
-                          if (myList.contains(widget.movie)) {
-                            _removeFromList(widget.movie);
+                          if (widget.list.contains(widget.movie)) {
+                            helper.deleteMovie(widget.movie.id);
                             check = true;
                           } else {
                             check = false;
-                            _addToList(widget.movie);
+                            helper.insertMovie(widget.movie);
                           }
                         }
                       },
@@ -197,7 +181,7 @@ class _MovieScreenState extends State<MovieScreen> {
                             ),
                             SizedBox(height: 2.0),
                             Text(
-                              widget.movie.episodes.toString(),
+                              widget.movie.nbepisodes.toString(),
                               style: TextStyle(
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.w600,
@@ -223,7 +207,7 @@ class _MovieScreenState extends State<MovieScreen> {
                 ),
               ),
               ContentScroll(
-                images: widget.movie.screenshots,
+                images: widget.movie.screenshots.split("@"),
                 title: 'Screenshots',
                 imageHeight: 200.0,
                 imageWidth: 250.0,

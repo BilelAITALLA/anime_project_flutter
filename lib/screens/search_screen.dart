@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:netflix/models/movie_model.dart';
 
 class SearchScreen extends StatefulWidget {
+  final List<Movie> movielist;
+  SearchScreen({this.movielist});
   @override
   _SearchScreenState createState() => _SearchScreenState();
 }
@@ -13,6 +15,11 @@ class _SearchScreenState extends State<SearchScreen> {
 
   bool _isSearch = true;
   String _searchText = "";
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   _SearchScreenState() {
     _searchEdit.addListener(() {
@@ -73,14 +80,14 @@ class _SearchScreenState extends State<SearchScreen> {
     return new Expanded(
       child: ListView.builder(
         padding: EdgeInsets.only(top: 10.0, bottom: 15.0),
-        itemCount: movies.length,
+        itemCount: widget.movielist.length,
         itemBuilder: (BuildContext context, int index) {
-          Movie movie = movies[index];
+          Movie movie = widget.movielist[index];
           return GestureDetector(
               onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => MovieScreen(movie: movies[index]),
+                    builder: (_) => MovieScreen(movie: widget.movielist[index]),
                   )),
               child: Stack(
                 children: <Widget>[
@@ -156,7 +163,7 @@ class _SearchScreenState extends State<SearchScreen> {
                           borderRadius: BorderRadius.circular(20.0),
                           child: Image(
                             width: 110.0,
-                            image: AssetImage(
+                            image: NetworkImage(
                               movie.poster,
                             ),
                             fit: BoxFit.cover,
@@ -167,7 +174,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     child: Container(
                       alignment: Alignment.center,
                       child: Text(
-                        "${movie.episodes.toString()} ep",
+                        "${movie.nbepisodes.toString()} ep",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
@@ -200,9 +207,9 @@ class _SearchScreenState extends State<SearchScreen> {
 
   Widget _searchListView() {
     List<Movie> _searchListItems = [];
-    for (int i = 0; i < movies.length; i++) {
-      var item = movies[i].title;
-      Movie movie = movies[i];
+    for (int i = 0; i < widget.movielist.length; i++) {
+      var item = widget.movielist[i].title;
+      Movie movie = widget.movielist[i];
 
       if (item.toLowerCase().contains(_searchText.toLowerCase())) {
         _searchListItems.add(movie);
@@ -298,7 +305,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             borderRadius: BorderRadius.circular(20.0),
                             child: Image(
                               width: 110.0,
-                              image: AssetImage(
+                              image: NetworkImage(
                                 movie.poster,
                               ),
                               fit: BoxFit.cover,
